@@ -104,11 +104,14 @@ for (var i=0; i<ProfLoss.length; i++){
   sum=sum+(ProfLoss[i]);
         
     }
-for (var i=0; i<ProfLoss.length; i++){
-    change=change+(ProfLoss[i]) - ProfLoss[i+1];
+/*for (var i=0; i<ProfLoss.length; i++){
+    change=change+(ProfLoss[i] - ProfLoss[i+1]);
     console.log(change)
         
-    }
+    }*/
+
+  var large = Math.max(...ProfLoss);
+
 
 var average = Math.round(sum/finances.length)
     console.log("```text")
@@ -118,7 +121,7 @@ var average = Math.round(sum/finances.length)
     console.log("Total: $"+sum)
     console.log("Average: $"+average)
     console.log("Average  Change: $"+change)
-    console.log("Greatest Increase in Profits:")
+    console.log("Greatest Increase in Profits: $"+large)
     console.log("Greatest Decrease in Profits: ")
 //console.log(sum)
 /** The average of the **changes** in Profit/Losses over the entire period.
