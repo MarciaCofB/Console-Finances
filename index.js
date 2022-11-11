@@ -86,3 +86,57 @@ var finances = [
 ['Jan-2017', 138230],
 ['Feb-2017', 671099]
 ];
+
+//* The total number of months included in the dataset.
+
+
+
+var ProfLoss = finances.map(d => d[1]); // [ 'a2', 'b2', 'c2' ]
+//console.log(ProfLoss)
+
+
+//* The net total amount of Profit/Losses over the entire period.
+var sum = 0;
+
+var change = 0;
+
+for (var i=0; i<ProfLoss.length; i++){
+  sum=sum+(ProfLoss[i]);
+        
+    }
+for (var i=0; i<ProfLoss.length; i++){
+    change=change+(ProfLoss[i]) - ProfLoss[i+1];
+    console.log(change)
+        
+    }
+
+var average = Math.round(sum/finances.length)
+    console.log("```text")
+    console.log("Financial Analysis")
+    console.log(" --------------------------")
+    console.log("Total Months: " + finances.length)
+    console.log("Total: $"+sum)
+    console.log("Average: $"+average)
+    console.log("Average  Change: $"+change)
+    console.log("Greatest Increase in Profits:")
+    console.log("Greatest Decrease in Profits: ")
+//console.log(sum)
+/** The average of the **changes** in Profit/Losses over the entire period.
+  * You will need to track what the total change in profits are from month to month and then find the average.
+  * (`Total/Number of months`)*/
+
+  //* The greatest increase in profits (date and amount) over the entire period.
+
+  //* The greatest decrease in losses (date and amount) over the entire period.
+
+  /* ```text
+  Financial Analysis
+  ----------------------------
+  Total Months: 25
+  Total: $2561231
+  Average  Change: $-2315.12
+  Greatest Increase in Profits: Feb-2012 ($1926159)
+  Greatest Decrease in Profits: Sep-2013 ($-2196167)
+  ```
+
+Your final code should print the analysis to the console.*/
