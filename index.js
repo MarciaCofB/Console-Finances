@@ -95,6 +95,8 @@ var finances = [
 var ProfLoss = finances.map(d => d[1]); // [ 'a2', 'b2', 'c2' ]
 //console.log(ProfLoss)
 
+var monthOnly = finances.map(d => d[0]); // [ 'a2', 'b2', 'c2' ]
+
 
 //* The net total amount of Profit/Losses over the entire period.
 var sum = 0;
@@ -111,7 +113,8 @@ var secondmonth = 0
 var totalFirst= 0
 var monthProfTwo =[]
 
-
+var increase = 0
+var decrease = 0
 
 var tots = 0;
 
@@ -131,6 +134,61 @@ for (i=0; i<ProfLoss.length-1; i++){
 
   }
 
+  for (i=0; i<ProfLoss.length-1; i++){
+    console.log(i)
+    firstmonth = ProfLoss[i]
+    //console.log(firstmonth)
+    secondmonth = ProfLoss[i+1]
+    //console.log(secondmonth)
+    var increase2 = (parseInt(secondmonth) - parseInt(firstmonth))
+    if(increase2 > increase){
+      increase = increase2
+    }
+    }
+  
+    //finding the greatest decrease in profits
+
+    for (i=0; i<ProfLoss.length-1; i++){
+      console.log(i)
+      firstmonth = ProfLoss[i]
+      //console.log(firstmonth)
+      secondmonth = ProfLoss[i+1]
+      //console.log(secondmonth)
+      var decrease2 = (parseInt(secondmonth) - parseInt(firstmonth))
+      if(decrease2 < decrease){
+        decrease = decrease2
+      }
+      }
+    
+      //finding the month for the greatest increase
+    for (i=0; i<ProfLoss.length-1; i++){
+      
+      firstmonth = ProfLoss[i]
+      //console.log(firstmonth)
+      secondmonth = ProfLoss[i+1]
+      //console.log(secondmonth)
+      var increase3 = (parseInt(secondmonth) - parseInt(firstmonth))
+      if(increase3 == increase){
+        var monthIncrease = monthOnly[i+1]
+      }
+      }
+
+
+       //finding the month for the greatest decrease
+    for (i=0; i<ProfLoss.length-1; i++){
+      
+      firstmonth = ProfLoss[i]
+      //console.log(firstmonth)
+      secondmonth = ProfLoss[i+1]
+      //console.log(secondmonth)
+      var decrease3 = (parseInt(secondmonth) - parseInt(firstmonth))
+      if(decrease3 == decrease){
+        var monthDecrease = monthOnly[i+1]
+      }
+      }
+    
+    
+
   tots = tots.toFixed(2)
 
 
@@ -138,7 +196,7 @@ for (i=0; i<ProfLoss.length-1; i++){
   var small = Math.min(...ProfLoss);
   
   for (i=0; i>ProfLoss.length; i++ ){
-    
+
   }
   
 
@@ -150,6 +208,6 @@ var average = Math.round(sum/finances.length)
     console.log("Total Months: " + finances.length)
     console.log("Total: $"+sum)
     console.log("Average  Change: $"+ tots)
-    console.log("Greatest Increase in Profits: $"+prof)
-    console.log("Greatest Decrease in Profits: ")
-    
+    console.log("Greatest Increase in Profits: "+ monthIncrease + "($" + increase + ")")
+    console.log("Greatest Decrease in Profits: "+ monthDecrease + "($" + decrease + ")")
+     
