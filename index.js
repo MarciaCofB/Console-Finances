@@ -102,13 +102,15 @@ var monthOnly = finances.map(d => d[0]);
 
 
 
-//* The net total amount of Profit/Losses over the entire period.
+//The net total amount of Profit/Losses over the entire period.
 
 var sum = 0;
 
 for (i=0; i<ProfLoss.length; i++){
   sum=sum+=ProfLoss[i]
 }
+
+
 
 
 //Finding the average change
@@ -118,7 +120,7 @@ var firstmonth = 0;
 var secondmonth = 0;
 
 for (i=0; i<ProfLoss.length-1; i++){
-  console.log(i)
+  
   firstmonth = ProfLoss[i]
   
   secondmonth = ProfLoss[i+1]
@@ -127,7 +129,11 @@ for (i=0; i<ProfLoss.length-1; i++){
     
   }
 
+
+
+//rounding the average change to 2 decimal places
   avgChange = avgChange.toFixed(2)
+
 
 
 
@@ -136,7 +142,7 @@ for (i=0; i<ProfLoss.length-1; i++){
 var increase = 0
 
   for (i=0; i<ProfLoss.length-1; i++){
-    console.log(i)
+    
     firstmonth = ProfLoss[i]
     
     secondmonth = ProfLoss[i+1]
@@ -156,7 +162,7 @@ var increase = 0
     var decrease = 0
 
     for (i=0; i<ProfLoss.length-1; i++){
-      console.log(i)
+      
       firstmonth = ProfLoss[i]
       
       secondmonth = ProfLoss[i+1]
@@ -171,14 +177,18 @@ var increase = 0
 
 
     
-      //finding the month for the greatest increase
+    //finding the the greatest increase
+
     for (i=0; i<ProfLoss.length-1; i++){
       
       firstmonth = ProfLoss[i]
-      //console.log(firstmonth)
+      
       secondmonth = ProfLoss[i+1]
-      //console.log(secondmonth)
+      
       var increase3 = (parseInt(secondmonth) - parseInt(firstmonth))
+
+
+      //finding the relevant month and year for the greatest increase
       if(increase3 == increase){
         var monthIncrease = monthOnly[i+1]
       }
@@ -186,22 +196,26 @@ var increase = 0
 
 
 
-       //finding the month for the greatest decrease
+
+
+    //finding the greatest decrease
+
     for (i=0; i<ProfLoss.length-1; i++){
       
       firstmonth = ProfLoss[i]
-      //console.log(firstmonth)
+      
       secondmonth = ProfLoss[i+1]
-      //console.log(secondmonth)
+      
       var decrease3 = (parseInt(secondmonth) - parseInt(firstmonth))
+
+
+      //finding the relevant month and year for the greatest decrease
       if(decrease3 == decrease){
         var monthDecrease = monthOnly[i+1]
       }
       }
     
     
-
-  
 
 //printing all the findings to the console
 
