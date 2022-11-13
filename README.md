@@ -20,7 +20,7 @@ Getting the for statements exactly right
 # Things I learned
 https://marciacofb.github.io/Console-Finances/
 
-marciacofb github io_SEO-Accessibility-Challenge
+https://github.com/MarciaCofB/Console-Finances
 
 
 
