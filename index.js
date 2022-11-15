@@ -101,7 +101,6 @@ var monthOnly = finances.map(d => d[0]);
 
 
 
-
 //The net total amount of Profit/Losses over the entire period.
 
 var sum = 0;
@@ -111,120 +110,59 @@ for (i=0; i<ProfLoss.length; i++){
 }
 
 
+//Fining the acg, increase and decrease in one for loop 
 
 
-//Finding the average change
+avgChange = 0;
+increase = 0;
+decrease = 0;
 
-var avgChange = 0;
-var firstmonth = 0;
-var secondmonth = 0;
+
 
 for (i=0; i<ProfLoss.length-1; i++){
   
-  firstmonth = ProfLoss[i]
-  
-  secondmonth = ProfLoss[i+1]
-  
-  avgChange += (parseInt(secondmonth) - parseInt(firstmonth)) / 85
+  //Finding the average change
+  firstmonthAvg = ProfLoss[i]
+  secondmonthAvg = ProfLoss[i+1]
+  avgChange += (parseInt(secondmonthAvg) - parseInt(firstmonthAvg)) / 85
+
+
+  //finding the greatest increase in profits
+  firstmonthIncrease = ProfLoss[i]
+  secondmonthIncrease = ProfLoss[i+1]
+  var increase2 = (parseInt(secondmonthIncrease) - parseInt(firstmonthIncrease))
+    if(increase2 > increase){
+      increase = increase2
+      increaseDate = monthOnly[i+1]
+    }
+
+    //finding the greatest decrease in profits
+    firstmonthDecrease = ProfLoss[i]
+    secondmonthDecrease = ProfLoss[i+1]
+    var decrease2 = (parseInt(secondmonthDecrease) - parseInt(firstmonthDecrease))
+    if(decrease2 < decrease){
+      decrease = decrease2
+      decreaseDate = monthOnly[i+1]
+    }
+
+
     
   }
-
-
-
+  
 //rounding the average change to 2 decimal places
   avgChange = avgChange.toFixed(2)
 
 
 
 
-//finding the greatest increase in profits
-
-var increase = 0
-
-  for (i=0; i<ProfLoss.length-1; i++){
-    
-    firstmonth = ProfLoss[i]
-    
-    secondmonth = ProfLoss[i+1]
-    
-    var increase2 = (parseInt(secondmonth) - parseInt(firstmonth))
-    if(increase2 > increase){
-      increase = increase2
-    }
-    }
-
-
-
-
-  
-    //finding the greatest decrease in profits
-
-    var decrease = 0
-
-    for (i=0; i<ProfLoss.length-1; i++){
-      
-      firstmonth = ProfLoss[i]
-      
-      secondmonth = ProfLoss[i+1]
-      
-      var decrease2 = (parseInt(secondmonth) - parseInt(firstmonth))
-      if(decrease2 < decrease){
-        decrease = decrease2
-      }
-      }
-
-
-
-
-    
-    //finding the the greatest increase
-
-    for (i=0; i<ProfLoss.length-1; i++){
-      
-      firstmonth = ProfLoss[i]
-      
-      secondmonth = ProfLoss[i+1]
-      
-      var increase3 = (parseInt(secondmonth) - parseInt(firstmonth))
-
-
-      //finding the relevant month and year for the greatest increase
-      if(increase3 == increase){
-        var monthIncrease = monthOnly[i+1]
-      }
-      }
-
-
-
-
-
-    //finding the greatest decrease
-
-    for (i=0; i<ProfLoss.length-1; i++){
-      
-      firstmonth = ProfLoss[i]
-      
-      secondmonth = ProfLoss[i+1]
-      
-      var decrease3 = (parseInt(secondmonth) - parseInt(firstmonth))
-
-
-      //finding the relevant month and year for the greatest decrease
-      if(decrease3 == decrease){
-        var monthDecrease = monthOnly[i+1]
-      }
-      }
-    
-    
-
 //printing all the findings to the console
 
-    console.log("```text")
-    console.log("Financial Analysis")
-    console.log(" --------------------------")
-    console.log("Total Months: " + finances.length)
-    console.log("Total: $"+sum)
-    console.log("Average  Change: $"+ avgChange)
-    console.log("Greatest Increase in Profits: "+ monthIncrease + "($" + increase + ")")
-    console.log("Greatest Decrease in Profits: "+ monthDecrease + "($" + decrease + ")")
-     
+console.log("```text")
+console.log("Financial Analysis")
+console.log(" --------------------------")
+console.log("Total Months: " + finances.length)
+console.log("Total: $"+sum)
+console.log("Average  Change: $"+ avgChange)
+console.log("Greatest Increase in Profits: "+ increaseDate + "($" + increase + ")")
+//console.log("Greatest Increase in Profits: " + increaseWithDate)
+console.log("Greatest Decrease in Profits: "+ decreaseDate + "($" + decrease + ")")
